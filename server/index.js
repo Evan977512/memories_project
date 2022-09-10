@@ -3,10 +3,14 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors";
 
+import postRoutes from "./routes/posts.js";
+
 const app = express();
 
-app.use(bodyParser.json({ linit: "30mb", extended: true }));
-app.use(bodyParser.urlencoded({ linit: "30mb", extended: true }));
+app.use("/posts", postRoutes);
+
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
 
 const CONNECTION_URL = "mongodb+srv://emdwlekr:rladudcks91@cluster0.wuba1f8.mongodb.net/?retryWrites=true&w=majority";
